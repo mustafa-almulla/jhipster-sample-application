@@ -1,0 +1,33 @@
+entity Idea {
+	title String required,
+    shortDescription String required, 
+    longDescription String required,
+    email String, 
+    voteUp Long, 
+    voteDown Long, 
+    date Instant required
+}
+
+entity Comment {
+	email String,
+    comment String required, 
+    date Instant required
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Idea{comments} to Comment,
+}
+
+
+// Set pagination options
+paginate Idea, Commentsith infinite-scroll
+
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
